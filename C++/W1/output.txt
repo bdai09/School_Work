@@ -1,0 +1,41 @@
+Script started on Thu 17 May 2018 12:30:49 PM EDT
+]0;bdai9@mtrx-node05pd:~/OOP244/workshop[?1034h[bdai9@mtrx-node05pd workshop]$ ws
+Welcome to SeneGraph
+No Of Samples: 0
+1- Number of Samples
+2- Sample Entry
+3- Draw Graph
+0- Exit
+> 1
+Enter number of samples on hand: 3
+No Of Samples: 3
+1- Number of Samples
+2- Sample Entry
+3- Draw Graph
+0- Exit
+> 2
+Please enter the sample values: 
+1/3: 30
+2/3: 60
+3/3: 100
+No Of Samples: 3
+1- Number of Samples
+2- Sample Entry
+3- Draw Graph
+0- Exit
+> 3
+Graph:
+********************* 30
+****************************************** 60
+********************************************************************** 100
+No Of Samples: 3
+1- Number of Samples
+2- Sample Entry
+3- Draw Graph
+0- Exit
+> 0
+Thanks for using SeneGraph
+]0;bdai9@mtrx-node05pd:~/OOP244/workshop[bdai9@mtrx-node05pd workshop]$ exit
+exit
+
+Script done on Thu 17 May 2018 12:31:20 PM EDT

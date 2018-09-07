@@ -1,0 +1,19 @@
+Student number:132954173
+Seneca email: BDAI9@myseneca.ca
+Name:Bo Dai
+Workshop 3: Classes and Privacy- AT_HOME REFLECTION, June5, 2018
+          
+
+Reflection: 
+
+1) How many elements are there in each C-style character string that stores a family or given name for the account? Why?
+There are 41 elements in the character string that stores family name or given name. 
+Because the string will take in 40 characters and at the end of the string it needs the '\0' null teminator which will take 1 space. So in total we need to set up string as 41 elements.
+
+2) Your class declares two member functions named set(...). In C, this would generate an error. Name the feature of C++ that allows this.
+Because of the overloading in C++, the compiler can refer the function by their identifier and parameter lists. Although the two display function have same identifier name, their parameter lists in the definition are different, which helps the compiler to select the function with matched argument types based on parameters types. Parameter types and orders are unique signature in this case, and compiler can use this information to do name mangling to distinguish the two functions.
+
+3) What have you learned during this workshop?
+I learned the difference between class and struct. By default, class is private, so we need to set public member functions to have access to the private data members. 
+Besides, it is a good practice with the logic of tesing Sin number and applying empty state. When transferring valid family name and given name, I updated my knowledge with strncpy in C++ by limiting the characters copied into new string.
+Overall, I got better knowledge about class concepts and have practices with member functions coding.

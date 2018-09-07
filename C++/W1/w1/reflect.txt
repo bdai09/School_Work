@@ -1,0 +1,40 @@
+Student number:132954173
+Seneca email: BDAI9@myseneca.ca
+Name:Bo Dai
+Workshop 1: Compiling Modules- AT_HOME REFLECTION, May 20, 2018
+          
+
+Reflection: 
+
+1. What is a namespace? Explain its purpose.
+
+Namespace is the scope that encloses variables, functions and other data into a separate region as entities, which is used to avoid confusion and conflicts that may occur. 
+Since different programmers may use same identifier for different functions in one application, there will be naming conflicts when compiling the assembled code. 
+Using namespace can help the compiler to clarify the function in which namespace group we are going to use and thus to reduce the confusion.
+
+2. Why are header files needed? Explain. 
+
+Header files are used to declare variables, class, and functions prototypes. 
+When we need to use the function or class in the main program, we just need to include the header file, which reduces the code redundancy and in this way certain function can be used multiple times. 
+Also, header files keep the declaration which can link to the implementation files when compiling and this makes the program executes. 
+
+3. In the instructions above, you were directed to compile only .cpp files but not the .h files. Explain why you should never compile header files. 
+
+We put declarations and prototypes in header files, while definitions and implementation code are in the .cpp files. 
+Header files are included in .cpp files and once we compile the .cpp files they are all compiled together. 
+Generally, we use header files to tell the compiler what kind of functions, class, or variables we are going to use. But the code needs to be referenced from source file. Thus, there is no need to compile header files.
+
+
+4. Explain why you should never include .cpp files in another file.
+
+We need to avoid direct connections and keep low coupling between implementation files. 
+Keeping each .cpp file separately will reduce code repeating, make it convenient to fix, and increase the possible multiple usage later. 
+Also, we should compile .cpp files separately and only once. Using header files instead of including .cpp files in another file will reduce the compile time and errors.
+
+5. Explain in your own words what have you learned on this workshop.
+
+I learned how to use pattern “ifndef” to prevent double declaration of the identifiers. 
+Also, I learned how to use namespace to separate function in specific scope. 
+And I practiced namespace declaration in .h file and definition in  .cpp file, which helps me to clarify the different concepts of header files and implementation files. 
+Later I used “Using namespace sict;”, which tells the compiler that I am going to use the functions inside sict scope. 
+This is practical to understand the purpose of namespace and how it can avoid conflicts.

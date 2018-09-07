@@ -1,0 +1,26 @@
+Student number:132954173
+Seneca email: BDAI9@myseneca.ca
+Name:Bo Dai
+Workshop 4: Constructors- AT_HOME REFLECTION, June8, 2018
+          
+
+Reflection: 
+
+1) What is a safe empty state? Could you define another state as the safe empty state?
+Safe empty state is the process to initialize an object's variables in the constructor to keep them in a well-defined state when created.
+It is to ensure that when calling member functions before the modifier call,the objects will not break and will function well.
+We define empty state for further condition tests in the member functions to prevent broken, thus it does not need to be 0 only. We can define another value as the safe empty state as long as we update the value in the code.
+
+2) Describe how you have minimized code duplication.
+We use isEmpty function in the other member functions, such as display() and name() functions to reduce code redundancy. Member functions can use the member functions in the same class to minimized the code duplication.
+
+3) Explain why the canTravelWith(...) member function can access the private data of the object referenced in its parameter.
+Because privacy is at the class level, which means canTravelWith() as the member function can access any instance data members of the same class. It is not implemented at individual level, so it can access the private data in the referenced object.
+
+4) What statement do you need to add to ensure that the strncpy(...) function executes correctly?
+We need to add null terminater at the end of the string, after we use the strncpy() function. Since we limit the copied characters number as 31. If the source string is shorter than limitation, it can copy the null terminator together. However, if the source string is longer, it will copy 31 characters without null terminator to the destination. Thus, we need the statement to assign the null terminator to the index 31 element in destination string. 
+
+5) Explain what you have learned in this workshop.
+I learned how to define a constructor and set up safe empty state to ensure the program will not break.
+Besides, I practiced to define different constructors, including default constructors, 2 parameter constructors, and 5 parameter constructors, which emphasizes my understanding about the function and purpose of setting up safe empty state.
+Lastly, I learned to assign null terminator after strncpy to ensure function executing correctly and this helps me to understand how strncpy works.

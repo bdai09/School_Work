@@ -1,0 +1,37 @@
+Student number:132954173
+Seneca email: BDAI9@myseneca.ca
+Name:Bo Dai
+Workshop 9: Function Templates - AT_HOME REFLECTION, July28, 2018
+          
+
+Reflection: 
+
+1. What happens if you try to put your templated functions in Data.cpp? Does your source code compile if you move all functions to Data.h? Explain.
+
+If I put templated functions in Data.cpp file, there will be problems. Because we include .h file in the main.cpp, when it compiles, the compiler will look into .h for function definitions, and then go into Data.cpp for declaration. If we put templated functions inside Data.cpp file, the compiler cannot see and know the templated functions inside Data.cpp. 
+If I move all functions to header file, it will compile perfectly.
+Because during compile time the compiler uses header file to execute template implementation.For different types in the .cpp file, the compiler will refer to the template in the header file to know how to excute the function. 
+
+
+2. Move one templated function into ws9_lab.cpp. Does it work now? Do you need to define the template function above main(), before it is used, or can you define it below main()?
+
+The templated function should be in the header file. If it is not, it will not work well because when we call the function it will be undefined.
+We need to define the template function above the the main() function.
+When including header file, the compiler refers and copies the code, so it knows how to execute the functions called in the main(). 
+If It's below the main function, when the main() calls the function,compiler won't know where is the definition .
+
+
+3. Could you have done this lab without templates, by just overloading your functions in Data.h to accept integer and double arguments? What is the advantage of using templates?
+
+We can do this lab without templates by using overloading the functions in Data.h for integer and double types, but it will generate code redundancy, which is not necessary.
+Since the logic and code in these two functions are the same,and just parameter type is different, templates can help us reduce code duplication and increase the flexibility.
+Using templates can make it possible to use one function to receive different data type parameters for same logic execution. So we don't need to write repeating code twice and modify code twice when debugging.
+
+4. Are the following equivalent? template<class T>
+template<typename T>
+Yes, they are equivalent and interchangeable.
+
+
+QUIZ 9 REFLECTION:
+10/10
+

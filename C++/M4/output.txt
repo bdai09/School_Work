@@ -1,0 +1,28 @@
+Script started on Fri 03 Aug 2018 09:57:33 AM EDT
+]0;bdai9@mtrx-node05pd:~/OOP244/project/M4[?1034h[bdai9@mtrx-node05pd M4]$ æ²¡ä[Kms4
+Linear: one two 
+As is: 
+one
+two
+
+Enter the following: 
+three<ENTER>
+four<ENTER>
+Ctrl^D<ENTER>
+
+three
+four
+one two three four 
+one
+two
+three
+four
+
+sku match
+Product < Perishable
+45|32|131|32
+113.5
+]0;bdai9@mtrx-node05pd:~/OOP244/project/M4[bdai9@mtrx-node05pd M4]$ exit
+exit
+
+Script done on Fri 03 Aug 2018 09:58:04 AM EDT

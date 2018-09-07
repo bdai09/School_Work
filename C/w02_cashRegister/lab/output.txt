@@ -1,0 +1,9 @@
+Script started on Thu 01 Feb 2018 04:52:12 PM EST
+bdai9@matrix:~/w02> ws
+Please enter the amount to be paid: $8.68
+Loonies required: 8, balance owing $0.68
+Quarters required: 2, balance owing $0.18
+bdai9@matrix:~/w02> exit
+exit
+
+Script done on Thu 01 Feb 2018 04:52:27 PM EST

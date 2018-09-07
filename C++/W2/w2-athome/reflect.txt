@@ -1,0 +1,23 @@
+Student number:132954173
+Seneca email: BDAI9@myseneca.ca
+Name:Bo Dai
+Workshop 2: Dynamic Memory- AT_HOME REFLECTION, May 28, 2018
+          
+
+Reflection: 
+
+1) Why do you need to allocate new dynamic memory when you increase the size of an existing array of dynamically allocated memory?
+We allocate a new dynamic memory for larger size to ensure it point to an empty space for the increased array, and copy the existing array to the new one. Because the existing array already points to the address where we do not know if any data already takes the space before or after the array. It may cause problems like wiping out data or incontinuous storage and is not possible to resize it. Thus, allocating a new dynamic memory will be the way to increase size of array. 
+
+
+2) The Kingdom structure stores the name of the kingdom in an array of characters. At the end of the program, we do not use the delete operator to deallocate the memory occupied by the name. Why don't we need to use the delete operator on this array itself? Explain.
+We deallocate the dynamic memory by using delete [] pkingdom, which point to the address that store members such as name inside the Kingdom. 
+All the data occupied by name is stored inside the memory and once we deallocate the memory the array will be gone. 
+
+3) There are two display(...) function definitions. How does the compiler know which definition to call from your main function?
+
+The compiler can refer the function by their identifier and parameter lists. Although the two display function have same identifier name, their parameter lists in the definition are different, which helps the compiler to select the function with matched argument types based on parameters types. Parameter types and orders are unique signature in this case, and compiler can use this information to do name mangling to distinguish the two functions.
+
+4) Explain what have you have learned in this workshop.
+
+I learned to increase size of array by allocating new dynamic memory and copying data from existing array. This is the helpful to understand how dynamic memory works and a good practice of using dynamic memory. Besides, I have learned how overloading works with compiler to distinguish the display functions by matching their parameters list and order. Lastly, in the .cpp file, I applied passing by address and passing by reference, which is helpful to understand features of C++ language.

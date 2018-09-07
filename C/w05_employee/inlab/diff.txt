@@ -1,0 +1,10 @@
+
+In line number 56 of your output:
+The output should be:
+Exiting Employee Data Program. Good Bye!!!
+But your output is: 
+Exiting Employee Data Program. Good Bye!!!bdai9@matrix:~/w05> 
+                                          ^
+------------------------------------------|
+Professor's character ASCII code: hex(d), dec(13)
+un-matched character ASCII code: hex(62), dec(98)
