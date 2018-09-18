@@ -1,0 +1,103 @@
+/********************************************************************************* 
+*
+* WEB222 – Assignment #4b
+*
+* I declare that this assignment is my own work in accordance with Seneca 
+* Academic Policy. No part of this assignment has been copied manually or 
+* electronically from any other source (including web sites) or distributed to 
+* other students. 
+* 
+* Name: ___Bo Dai____ Student ID: _132954173_____ Date: ___July14, 2018_______ 
+* 
+********************************************************************************/
+/* Select main-container to adjust margin and width  */
+.main-container{
+    max-width:960px;
+    margin:0 auto;
+}
+/* Select all <nav> elements that are a child of an element with class “main-container” 
+and adjust it’s size and position */
+.main-container nav{
+    width:30%;
+    float:left;
+}
+/* Select class main that are a child of an element with class “main-container” 
+and adjust it’s size and position */
+.main-container .main{
+    width:70%;
+    float:right;
+}
+/* Select all header elements that are a child of an element with class “main-container” 
+and adjust it’s size and position */
+.main-container header{
+    padding:10px;
+    background-color: #eeeeee;
+    border-bottom:1px solid #cccccc;
+    margin-bottom:30px;
+}
+/* Select all h1 elements inside header that are a child of an element with class “main-container” 
+and adjust it’s size and position */
+.main-container header h1{
+    width:70%;
+    font-size:24px;
+    float:right;
+    text-align:right;
+    margin-top:10px;
+}
+/* Select all footer elements that are a child of an element with class “main-container” 
+and adjust it’s size and position */
+.main-container footer{
+    clear:both;
+    padding:20px 10px;
+    background-color: #eeeeee;
+    border-top:solid 1px #cccccc;
+    font-size:13px;
+}
+/* Select id #logo to adjust it’s size and position */
+#logo {
+    width:30%;
+    font-size:25px;
+    font-weight:bold;
+}
+/* Select <img> elements inside id #logo to adjust it’s size and position */
+#logo img{
+    width:94px;
+    vertical-align:middle;
+}
+/* Select <ul>elements inside <nav> elements and adjust it’s size and position */
+nav ul{
+    list-style-type:none;
+}
+/* Select <a>elements inside <ul> which is under <nav> elements and adjust it’s size and position */
+nav ul a{
+    display:block;
+    text-decoration:none;
+    padding:5px;
+}
+/* Select all <div> with class province and adjust it’s size and position */
+div.province {
+    width:30%;
+    float:left;
+    margin:8px;
+    height:310px;
+}
+/* Select all class description inside <div> which has class province and adjust it’s size and position */
+div.province .description {
+    max-height:165px;
+    overflow-y: auto;
+    overflow-x:hidden;
+    margin:8px 0px;
+}
+/* Select all <a> elements inside <div> which has class province and adjust it’s size and position */
+div.province a {
+    display:block;
+    text-align:center;
+    background-color:#555555;
+    color:#eeeeee;
+    text-decoration:none;
+    padding:5px; 
+}
+/* Select class flag that inside <img> and adjust it’s size and position */
+img.flag{
+    width:100%;
+}

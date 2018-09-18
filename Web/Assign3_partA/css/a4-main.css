@@ -1,0 +1,64 @@
+/* Place all of your CSS Code in this file */
+
+/********************************************************************************* 
+*
+* WEB222 – Assignment #4a
+*
+* I declare that this assignment is my own work in accordance with Seneca 
+* Academic Policy. No part of this assignment has been copied manually or 
+* electronically from any other source (including web sites) or distributed to 
+* other students. 
+* 
+* Name: ___Bo Dai_____________ Student ID: _132954173_____ Date: ___July14, 2018_______ 
+* 
+********************************************************************************/
+/* Add a new font colour to the <body> element */
+body {
+   color:rgb(4, 0, 255);
+}
+/*Add a new background colour to the <nav> and <footer> elements*/
+nav,footer{
+    background-color: #c0c0c0;
+}
+/*Style the <header></header> element using at least 2 properties*/
+header{
+    color:black;
+    font-size:20pt;
+    text-shadow:5px 5px 5px;
+}
+/*Style the class "app-title" inside <h1> using at least 3 properties*/
+h1.app-title{
+    color:green;
+    font-family: Lobster, cursive;
+    font-size: 30pt;
+    padding:10px;
+    margin: 1px;
+}
+/*Style the div with class "main-table-container" using at least 3 properties*/
+div.main-table-container{
+    max-height:500px; 
+    overflow-y:auto;
+    border:1px solid black;
+}
+/*Add at least 4 style properties to the <th> elements inside the table which has class "main-table-top">*/
+table.main-table-top th{
+    background-color:lemonchiffon;
+    padding: 10px;
+    font-size:20px;
+    font-weight:bold;
+    border:1px green;
+}
+/*Add at least 4 style properties to the <td>elements inside the <table> which has class "main-table"*/
+table.main-table td{
+    padding: 10px;
+    font-size:10px;
+    font-weight:bold;
+    border:1px solid blue;
+    vertical-align:bottom;
+}
+/*Select and add at least 2 properties to all <span> elements inside <p> elements 
+which are inside <table> element with class "main-table"*/
+table.main-table p span{
+    text-align: center;
+    text-shadow:1px 1px 1px;
+}
