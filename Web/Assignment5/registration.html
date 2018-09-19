@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+         <title>Welcom Page-Bo Dai</title>
+        <meta charset="UTF-8" />
+        <!-- link css and js files -->
+        <link rel="stylesheet" href="normalize1.css"/>
+        <script src="registration.js"></script>
+    </head>
+    <body>
+        <header>
+            <div id="header">
+                <img id="logo" src="summer_logo.jpg" alt="logo">
+                <h1 class="headtitle">
+                    Beach &amp; Supply - Register Now! 
+                </h1>
+            </div>
+        </header>
+        <div class="mainbody">
+         <!-- navigation side -->
+        <nav>
+            <div class="navigation">
+            <ul>	
+                <li><a class="menu" href="index.html">Welcom Page</a></li>
+                <li><a class="menu" href="registration.html">Registration</a></li>
+            </ul>
+            </div>
+        </nav>
+        <div class="maincontent">
+            <form id='signup' name='signup' method='post' 
+            action='https://httpbin.org/post' onsubmit='return formValidation();'>
+            <!-- user name input -->
+            <h3>Please enter your name</h3> 
+            <div>
+                <label title="Name must start with a letter." for="fname">First Name&nbsp;</label> 
+                <span class='inputbox'>
+                    <input id='fname' class='inputtext' name='fname' type="text" required onkeyup="valid()"/>
+                </span>
+            </div>
+            <div>
+                <label title="Name must start with a letter." for="lname">Last Name&nbsp;</label> 
+                <span class='inputbox'>
+                    <input id='lname' class='inputtext' name='lname' type="text" required onkeyup="valid()"/>
+                </span>
+            </div> 
+
+            <!-- shipping address input -->
+            <h3>Please enter your shipping address</h3>
+            <div>
+                <span>Unit#&nbsp;</span>
+                <span class="inputbox">
+                    <input id='unitnum' class='inputtext' name='unitnum' type="text" required onkeyup="valid()"/>           
+                </span>
+            </div>
+            <div>
+                <span>Street#&nbsp;</span>
+                <span class='inputbox'>
+                    <input id='streetnum' class='inputtext' name='streetnum' type="text" required onkeyup="valid()"/>           
+                </span>
+            </div>
+            <div>
+                <label title="Street name cannot contain digits." for="stname">Street Name&nbsp;</label> 
+                <span class='inputbox'>
+                    <input id='stname' class='inputtext' name='stname' type="text" required onkeyup="valid()" pattern="[^0-9]{1,}"/>
+                </span>
+            </div> 
+            <div>
+                <label title="City must contain letters only." for="city">City&nbsp;</label> 
+                <span class='inputbox'>
+                    <input id='city' class='inputtext' name='city' type="text" required onkeyup="valid()" pattern="[A-Za-z ]{1,}"/>
+                </span>
+            </div> 
+            <!--province drop-down list, Ontario as default-->  
+            <div>
+                <span>Province&nbsp;</span>
+                <span class='inputbox'>
+                <select name="province">
+                    <option value="AB">Alberta</option>
+                    <option value="BC">British Columbia</option>
+                    <option value="MB">Manitoba</option>
+                    <option value="NB">New Brunswick</option>
+                    <option value="NL">Newfoundland and Labrador</option>
+                    <option value="NS">Nova Scotia</option>
+                    <option value="ON" selected>Ontario</option>
+                    <option value="PE">Prince Edward Island</option>
+                    <option value="QC">Quebec</option>
+                    <option value="SK">Saskatchewan</option>
+                </select>
+                </span>
+            </div>
+
+            <div>
+                <label title="only Canadian format allowed, for example C1A1A7." for="postcode">Postal Code&nbsp;</label> 
+                <span class='inputbox'>
+                    <input class='inputtext' name='postcode' id='postcode' type="text" required 
+                    onkeyup="valid()" pattern="[A-Za-z][0-9][A-Za-z][0-9][A-Za-z][0-9]"/>
+                </span>
+            </div>   
+            <br>
+            <!--Contact information-->  
+            <h3>Please enter your contact information</h3>
+            <div>
+                <span>Email&nbsp;</span>
+                <span class='inputbox'>
+                <input class='inputtext' name='email' type="email" required onkeyup="valid()"/>           
+               </span>
+            </div>  
+            <div>
+                <label title="Phone# must be 10 digits, format allowed xxx-xxx-xxxx." for="phone">Phone#&nbsp;</label> 
+                <span class='inputbox'>
+                    <input  id='phone' class='inputtext' name='phone' type="tel" required 
+                     onkeyup="valid()" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"/>
+                </span>
+            </div>   
+            <br>   
+            <!--Account information-->  
+            <h3>Please set up your account information </h3>
+            <div>
+                <label title="Username must start with a letter, must have at least 6 characters." 
+                for="username">User name&nbsp;</label> 
+                <span class='inputbox'>
+                    <input class='inputtext' name='username' id='username' type="text" required 
+                    onkeyup="valid()" pattern="[A-Za-z].{5,}"/>
+                </span>
+            </div> 
+            <!--Password: must be 8 characters long, must start with a character, 
+            must have at least 1 digit and 1 uppercase. The password strings must match. 
+            Pattern attribute is not allowed for this field.--> 
+            <div>
+                <label title="8 characters long, start with character, at least 1 digit and 1 uppercase." 
+                    for="password">Password&nbsp;</label> 
+                <span class='inputbox'>
+                    <input class='inputtext' id="password" name='password' type="password" required onkeyup="valid()"/>
+                </span>
+            </div> 
+            <div>
+                <label title="Please confirm your password." for="repassword">Confirm Password&nbsp;</label> 
+                <span class='inputbox'>
+                    <input class='inputtext' id="repassword" name='repassword' type="password" required onkeyup="valid()"/>
+                </span>
+            </div> 
+            <br>
+            <!--hidden input with my student information-->
+            <input type="hidden" name="lastName" id="lastName" value="Dai">
+            <input type="hidden" name="studentId" id="studentId" value="132954173">
+
+            <div class="button">
+                <input id="submit" type="submit">
+                <input id="reset" type="reset">
+            </div>
+            <br>
+            </form>
+        </div>   
+        <div id="sidepanel" class="sidepanel"></div>
+       </div>
+        <footer>
+            <div class="footer">
+             &copy; 2018 Bo Dai
+            </div>
+        </footer>
+    </body>
+</html>
+
+

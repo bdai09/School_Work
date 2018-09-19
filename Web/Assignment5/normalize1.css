@@ -1,0 +1,180 @@
+/* Change default font family in all browsers
+ * Prevent adjustments of font size after orientation changes in IE and iOS.
+ */
+ html {
+    font-family: sans-serif; 
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+  }
+
+header {
+    width: 1000px;
+    margin: 0 auto;
+    background-color:darkblue;
+    color: hsl(0, 47%, 96%);
+}
+
+#header h1.headtitle {
+    text-align: center;
+    font-family: Baskerville, "Goudy Old Style",Garamond, Palatino, serif; 
+    font-style: italic;
+    width:fit-content;
+    line-height: 90px; 
+    margin: 0 auto;  
+}
+/*logo left side middle*/
+#logo{
+    height: 4em;
+    width: 4em;
+    float:left;
+    padding-top:1em;
+    padding-left:4em;
+}
+
+/*add picture as background*/
+body{
+    background-image:url("homepage.jpg");
+    background-position:center;
+    width:1200px;
+    height:100%;
+}
+div.mainbody{
+    height: 450px;
+    max-width: 1000px;
+    margin: 0px auto;
+    background-color:white;
+}
+
+div.maincontent {
+    
+    width: 60%;
+    overflow: auto;
+    height: 450px;
+    float: left;
+}
+/*signup form*/
+form {
+    margin: 0 auto;
+    padding: 1em;
+    border: 2px solid #CCC;
+    border-radius: 2em;
+}
+label{
+    text-align:left;
+}
+.inputbox,select{
+    width:190px;
+    float:right;
+    background-color: white;
+    border:solid 1px rgb(199, 199, 247); 
+    margin: 1px 1px 1px;
+}
+#signup div{
+    width:350px;
+    margin-bottom:10px;
+}
+span{border:0px !important;}
+
+.inputtext {
+    font-size: 14px; 
+    font-style:italic;
+    font-weight:bold;
+}
+
+input:focus:invalid {
+    border: 2px solid red;
+}
+
+#submit, #reset{
+    margin: 1px auto;
+    width: 120px;
+}
+
+div.button {
+    width: fit-content;
+    margin: 10px auto;
+}
+
+p{
+    padding: 5px;
+}
+/*different color for panel*/
+div.sidepanel {
+    background-color: rgb(150, 194, 211);
+    width: 192px;
+    min-height: 50%;
+    float: left;
+    border: 2px solid #CCC;
+    border-radius: 1em;
+    color:rgb(218, 108, 6);
+    font-family: serif; 
+    font-style: italic;
+}
+
+/*navigation side */
+nav {
+    background-color: rgba(0, 0, 0, 0.205);
+    width: 20%;
+    min-height: 448px;
+    float:left;
+    border-radius: 1em;
+    border: 2px solid #CCC;
+}
+
+/*list output for nav index*/
+nav ul {
+    -webkit-padding-start: 0px;
+    list-style-type: none;
+}
+
+nav ul a.menu {
+    font-size: 17px; 
+    font-weight:bold;
+    text-decoration: none;
+    display:block; 
+	padding:2px; 
+	width:8em;
+	margin:5px; 
+	color:black; 
+    font-family: Verdana, "Trebuchet MS",sans-serif;
+    border-radius:10px; text-align:center; 
+	border: 3px double black;
+}
+/*change color based on activity*/
+nav ul a.menu:link, nav ul a.menu:visited {
+    background:rgb(206, 205, 214);
+    border:3px double black; 
+} 
+nav ul a.menu:hover {
+    background: rgb(90, 88, 211);
+    border:3px double black;
+} 
+
+
+li{
+    padding: 5px;
+}
+
+footer {
+    max-width: 1000px;
+    margin: 0 auto;
+    border-radius: 2em;
+    background-color:white;
+    border: 1px solid #CCC;
+
+}
+
+footer div.footer {
+    background-color: rgb(128, 124, 124);
+    height: 30px;
+    width:100%;
+    float:left;
+    text-align: center;
+    color:rgb(231, 235, 8);
+    font-family: Baskerville, "Goudy Old Style",Garamond, Palatino, serif; 
+    font-weight:bold;
+}
+
+
+
+
