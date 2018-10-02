@@ -2,21 +2,40 @@ var errors=document.querySelector(".sidepanel");
 
 function formValidation(){
     var errors=document.querySelector(".sidepanel");
-    errors.innerHTML="";
     var password1=document.signup.password;
     var password2=document.signup.repassword;
-    var test1=testpassword(password1);
-    var test2=testpassword(password2);
-    var test3=match(password1,password2);
-    if(test1&&test2&&test3){
-        errors.innerHTML+=("Congratulations! You have been registered.");
-      return true;
-    }
-    else {
-        errors.innerHTML+="<p>Error! Please try again.</p>";
+    errors.innerHTML=""
+    nodigit=0;
+    noUppercase=0;
+    var value=password1.value.trim();
+    if(value.length!=8){
+        errors.innerHTML+="<p>Password must be 8 characters long</p>";
+        password1.focus();
+        //document.getElementById("password").focus();
         return false;
     }
-    
+    if(value.charAt(0).toUpperCase()>"Z"&&value.charAt(0).toUpperCase()<"A"){
+        errors.innerHTML+="<p>Password must start with a character</p>";
+        password1.focus();
+        return false;
+    }
+
+    for(var i=0; i<value.length;i++){
+         !isNaN(value.charAt(i))? nodigit++ : nodigit;
+          value.charAt(i)<='Z'&& value.charAt(i)>='A'?noUppercase++ : noUppercase;
+    }
+   if(nodigit==0||noUppercase==0){
+         errors.innerHTML+="<p>Password must have at least 1 digit and 1 uppercase character</p>";  
+         password1.focus();
+        return false;
+    } 
+    var test3=match(password1,password2);
+    if(!test3){
+        //errors.innerHTML+="<p>Error! Please try again.</p>";
+        return false;
+    }
+    errors.innerHTML+=("Congratulations! You have been registered.");
+    return true;
 }
 
 function valid(){
@@ -59,50 +78,8 @@ function valid(){
             }
         }
     }
-    else if(invalid==null&&current!=null){
-        //errors.innerHTML="";
-        var password1=document.signup.password;
-        var password2=document.signup.repassword;
-        var test1=testpassword(password1);
-        var test2=testpassword(password2);
-        var test3=match(password1,password2);
-        if(test1&&test2){
-            if(test3){
-            errors.innerHTML+="<p>Data in the field is valid</p>";
-        }
-        
-        }
-    }
 }
-function testpassword(src){
-    var errors=document.querySelector(".sidepanel");
-    errors.innerHTML=""
-    nodigit=0;
-    noUppercase=0;
-    var value=src.value.trim();
-    if(value.length!=8){
-        errors.innerHTML+="<p>Password must be 8 characters long</p>";
-        value.focus();
-        return false;
-    }
-    else{
-        if(value.charAt(0).toUpperCase()>"Z"&&value.charAt(0).toUpperCase()<"A"){
-            errors.innerHTML+="<p>Password must start with a character</p>";
-            return false;
-        }
-        else{
-            for(var i=0; i<value.length;i++){
-                !isNaN(value.charAt(i))? nodigit++ : nodigit;
-                value.charAt(i)<='Z'&& value.charAt(i)>='A'?noUppercase++ : noUppercase;
-            }
-            if(nodigit==0||noUppercase==0){
-                errors.innerHTML+="<p>Password must have at least 1 digit and 1 uppercase character</p>";  
-                value.focus();
-                return false;
-            } else{ return true;}
-        }
-    }
-}
+
 //check if password match
 function match(pass1, pass2){
     var errors=document.querySelector(".sidepanel");
