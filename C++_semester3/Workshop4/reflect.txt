@@ -1,0 +1,15 @@
+// Name: Bo Dai
+// Seneca Student ID:132954173
+// Seneca email: bdai09@myseneca.ca
+// Date of completion: Oct 2, 2018
+// Workshop 4: Containers
+
+// I confirm that the content of this file is created by me,
+// with the exception of the parts provided to me by my professor
+
+Reflection: 
+
+From this workshop, I practiced to design and code composition objects, where I understood the has-a relationship between classes.
+Beside, I learned how to read in records and test components in string as well as using string functions to parse a string object into components.
+Moreover, coding move constructor and move assignment operator reviewed my knowledge from previous chapters.
+Lastly, by using array of pointers, I enhanced my understanding of using pointers.
