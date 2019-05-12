@@ -1,0 +1,16 @@
+// Name: Bo Dai
+// Seneca Student ID:132954173
+// Seneca email: bdai09@myseneca.ca
+// Date of completion: Nov 7, 2018
+// Workshop 7: STL Algorithms
+
+// I confirm that the content of this file is created by me,
+// with the exception of the parts provided to me by my professor
+
+Reflection: 
+
+In this workshop, I learned how to read file and copy data into a sequential container, where I practice how to use container functions such as push_back.
+Besides, through coding total value, mean value, median value, and standard deviation, I practiced how to use STL's numeric library functions, such as accumulate, inner_product, and transform.
+I applied lambda expression in numeric library function calculation, which simplified the code and performed the logic.
+Lastly, I used sort function in STL's algorithm to sort copied data and got the median value.
+
