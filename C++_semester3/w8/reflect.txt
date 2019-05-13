@@ -1,0 +1,14 @@
+// Name: Bo Dai
+// Seneca Student ID:132954173
+// Seneca email: bdai09@myseneca.ca
+// Date of completion: Nov 14, 2018
+// Workshop : Smart pointer
+
+// I confirm that the content of this file is created by me,
+// with the exception of the parts provided to me by my professor
+
+Reflection: 
+
+
+In this workshop, I created a program component of quadratic complexity by extracting data from description structure and price structure and put into list vector of product struction
+Through using raw pointer and smart pointer, I compared how to move an object,how to dynamically allocate memory, and learned how ownership works with smart pointer. I need to use either std::move() or use & for pointer to avoid ownership issue.
