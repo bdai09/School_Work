@@ -6,7 +6,7 @@ Policy.
 other source
 * (including web sites) or distributed to other students.
 *
-* Name: ____Bo Dai_____ Student ID: ___132954173_____ Date: _May14,2019______
+* Name: ____Bo Dai_____ Student ID: ___132954173___ Date: _May14,2019______
 *
 *
 ********************************************************************************/
@@ -21,7 +21,8 @@ $("#teams-menu").on("click",function(event){
     .done(function(data){
         $("#data").empty()
         .append("<h3>Teams</h3>")
-        .append(JSON.stringify(prettyPrintJson.toHtml(data)));
+        .append(JSON.stringify(data));
+        $("#data").html(prettyPrintJson.toHtml(data));
     });
 });
 
@@ -31,7 +32,8 @@ $("#employees-menu").on("click",function(event){
     .done(function(data){
         $("#data").empty()
         .append("<h3>Employees</h3>")
-        .append(JSON.stringify(prettyPrintJson.toHtml(data)));
+        .append(JSON.stringify(data));
+        $("#data").html(prettyPrintJson.toHtml(data));
     });
 });
 $("#projects-menu").on("click",function(event){
@@ -40,7 +42,8 @@ $("#projects-menu").on("click",function(event){
     .done(function(data){
         $("#data").empty()
         .append("<h3>Projects</h3>")
-        .append(JSON.stringify(prettyPrintJson.toHtml(data)));
+        .append(JSON.stringify(data));
+        $("#data").html(prettyPrintJson.toHtml(data));
     });
 });
 $("#positions-menu").on("click",function(event){
@@ -49,7 +52,8 @@ $("#positions-menu").on("click",function(event){
     .done(function(data){
         $("#data").empty()
         .append("<h3>Positions</h3>")
-        .append(prettyPrintJson.toHtml(JSON.stringify(data)));
+        .append(JSON.stringify(data));
+        $("#data").html(prettyPrintJson.toHtml(data));
     });
 });
 });
