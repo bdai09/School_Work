@@ -21,8 +21,7 @@ $(function() {
             $('#data')
                 .empty()
                 .append('<h3>Teams</h3>')
-                .append(JSON.stringify(data));
-            $('#data').html(prettyPrintJson.toHtml(data));
+                .append(prettyPrintJson.toHtml(data));
         });
     });
 
@@ -32,8 +31,7 @@ $(function() {
             $('#data')
                 .empty()
                 .append('<h3>Employees</h3>')
-                .append(JSON.stringify(data));
-            $('#data').html(prettyPrintJson.toHtml(data));
+                .append(prettyPrintJson.toHtml(data));
         });
     });
     $('#projects-menu').on('click', function(event) {
@@ -42,8 +40,7 @@ $(function() {
             $('#data')
                 .empty()
                 .append('<h3>Projects</h3>')
-                .append(JSON.stringify(data));
-            $('#data').html(prettyPrintJson.toHtml(data));
+                .append(prettyPrintJson.toHtml(data));
         });
     });
     $('#positions-menu').on('click', function(event) {
@@ -52,8 +49,7 @@ $(function() {
             $('#data')
                 .empty()
                 .append('<h3>Positions</h3>')
-                .append(JSON.stringify(data));
-            $('#data').html(prettyPrintJson.toHtml(data));
+                .append(prettyPrintJson.toHtml(data));
         });
     });
 });
