@@ -21,7 +21,7 @@ int main(){
 
 //define function factorial here...
 unsigned int factorial(unsigned int n) {
-	int temp = 1;
+	unsigned int temp = 1;
 	for (unsigned int i = n;i >0;i--) {
 		temp = i * temp;
 	}
@@ -31,7 +31,7 @@ unsigned int factorial(unsigned int n) {
 //define function power here...
 
 double power(double base, unsigned int n) {
-	int temp = 1;
+	double temp = 1.0;
 	for (unsigned int i = 1;i <=n;i++) {
 		temp = temp*base;
 	}
@@ -41,12 +41,12 @@ double power(double base, unsigned int n) {
 
 //define function fibonacci here...
 unsigned int fibonacci(unsigned int n) {
-	int f0 = 0;
-	int f1 = 1;
-	int fnext = 0;
+	unsigned int f0 = 0;
+	unsigned int f1 = 1;
+	unsigned int fnext = 0;
 	if (n == 0) return 0;
-	if (n == 1) return 1;
-	for (unsigned int i = 0;i < n-1;i++) {			
+	if (n == 1) return 1; //for f0 and f1
+	for (unsigned int i = 0;i < n-1;i++) {	//for n>1		
 		 fnext= f0+f1;
 		 f0 = f1;
 		 f1 = fnext;
