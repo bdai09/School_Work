@@ -1,0 +1,10 @@
+{
+  "name": "words",
+  "version": "1.0.0",
+  "scripts": {
+    "build": "parcel index.html"
+  },
+  "devDependencies": {
+    "parcel": "^1.12.3"
+  }
+}
