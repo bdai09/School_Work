@@ -1,0 +1,39 @@
+<h1>VUE Example5</h1>
+<div id="app">
+    <h2>Employee List ({{employees.length}})</h2> <!---->
+  
+    <button v-on:click="loadEmployees">Load Employees</button>
+  
+    <ol>
+      <li v-for="employee of employees" :key="employee._id">  <!--v-bind:key, one way binding-->
+        {{employee.FirstName}} {{employee.LastName}}
+        <button>click me</button><!--can also insert like pictures or other things from API database-->
+      </li>
+    </ol>
+  </div>
+  
+  <script src="https://unpkg.com/vue"></script>
+  <script>
+    const teamsApiUrl = 'https://quiet-wave-16481.herokuapp.com';
+    const vm = new Vue({
+      el: '#app',
+      data: {
+        employees: []
+      },
+      methods: {
+        loadEmployees: function() {
+          fetch(`${teamsApiUrl}/employees`)  //read fetch api, build in return promise, ajax request
+            .then(res => res.json())
+            .then(employees => {//when it is done to be parse by res.json(), give me the list to render
+              this.employees = employees;
+            });
+        },
+        anotherMethod: function(){}
+
+      }
+     // created: function() {  //this life cycle hooks make loading auto to cal loadEmployees
+      //  this.loadEmployees();
+      //  console.log("created hook happend");
+     // }
+    });
+  </script>
