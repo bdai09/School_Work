@@ -1,0 +1,21 @@
+{
+  "name": "May22-Vue",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server":"http-server .",
+    "parcel":"parcel index.html"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "http-server": "^0.11.1",
+    "parcel": "^1.12.3"
+  },
+  "dependencies": {
+    "vue": "^2.6.10"
+  }
+}
