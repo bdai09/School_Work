@@ -1,0 +1,55 @@
+<div id="app">
+    <h2>Employee List</h2>
+  
+    <label for="city">City</label>
+    <select id="city" @change="updateCity"><!---v-on change="f"  same as @change-->
+      <!--goal: let all show current selected city, and only show employees in that city-->
+      <option selected>All</option>
+      <option v-for="city of cities" :key="city">{{city}}</option>
+    </select>
+  
+    <ul>
+      <li v-for="employee of filteredEmployees" :key="employee._id">
+        {{employee.FirstName}} {{employee.LastName}}
+      </li>
+    </ul>
+  </div>
+  
+  <script src="https://unpkg.com/vue"></script>
+  <script>
+    const teamsApiUrl = 'https://quiet-wave-16481.herokuapp.com';
+    const vm = new Vue({
+      el: '#app',
+      data: {
+        employees: [],
+        cities: [],
+        city: 'All'
+      },
+      computed: { //generated reactively, has dependencies on other 2 values, once change will trigger change
+        filteredEmployees: function() {
+          return this.employees.filter(employee => 
+            this.city === 'All' || employee.AddressCity === this.city);
+        }
+      },
+      methods: {
+        loadEmployees: function() {
+          fetch(`${teamsApiUrl}/employees`)
+            .then(res => res.json())
+            .then(employees => {
+              // Create a sorted Array of Cities removing duplicates
+              // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set#Remove_duplicate_elements_from_the_array
+              this.cities = [...new Set(employees.map(employee => employee.AddressCity))].sort(); 
+              //map extract cities with duplicates, new Set() throw away duplicates, [...] spread operator make it a new array, then sort()
+              this.employees = employees;
+            });
+        },
+        updateCity: function() {
+          // Update our city to be whatever the user selected in the list
+          this.city = this.$el.querySelector('#city').value;
+        }
+      },
+      created: function() {
+        this.loadEmployees();
+      }
+    });
+  </script>
