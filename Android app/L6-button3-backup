@@ -1,0 +1,16 @@
+button1=findViewById(R.id.BtnFindStu); //login
+        button1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Cursor cursorSelectAll=sqLiteDatabase1.rawQuery("SELECT * FROM userPassTable", null);
+                String message="TRY AGAIN";
+                while(cursorSelectAll.moveToNext()){
+                    if(cursorSelectAll.getString(0).equals(editText1.getText().toString())&&
+                            cursorSelectAll.getString(1).equals(editText2.getText().toString())){
+                        message="SUCCESS";
+                        Intent intent=new Intent(MainActivity.this, SuccessActivity.class);
+                        startActivity(intent);
+                    }
+                }
+            }
+        });
