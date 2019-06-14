@@ -1,0 +1,63 @@
+package com.example.bdai9.lab6;
+
+import android.content.Context;
+import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
+
+public class MainActivity extends AppCompatActivity {
+    Button button1, button2, button3, button4;
+    SQLiteDatabase sqLiteDatabase1;
+    EditText editText1,editText2,editText3;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        sqLiteDatabase1=openOrCreateDatabase("UserPassDB", Context.MODE_PRIVATE,null);
+        sqLiteDatabase1.execSQL("create table if not exists userPassTable(usernames varchar,passwords varchar, marks varchar);");
+        editText1=findViewById(R.id.ID);
+        editText2=findViewById(R.id.Name);
+        editText3=findViewById(R.id.Marks);
+
+
+//        button3=findViewById(R.id.BtnFindStu); //login
+//        button3.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Cursor cursorSelectAll=sqLiteDatabase1.rawQuery("SELECT * FROM userPassTable", null);
+//                String message="TRY AGAIN";
+//                while(cursorSelectAll.moveToNext()){
+//                    if(cursorSelectAll.getString(0).equals(editText1.getText().toString())&&
+//                            cursorSelectAll.getString(1).equals(editText2.getText().toString())){
+//                        message="SUCCESS";
+//                       // Intent intent=new Intent(MainActivity.this, SuccessActivity.class);
+//                      //  startActivity(intent);
+//                    }
+//                }
+//            }
+//        });
+
+        button1=findViewById(R.id.BtnAddStu); //register
+        button1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                sqLiteDatabase1.execSQL("insert into userPassTable values('"+editText1.getText()+
+                "','"+editText2.getText()+"','"+editText3.getText()+"');");
+                Toast.makeText(getApplicationContext(),"The following student was added"+editText1.getText()+"&"+
+                editText2.getText()+"&"+editText3.getText()+ "ADDED", Toast.LENGTH_LONG).show();
+                editText2.setText("");
+                editText1.setText("");
+                editText3.setText("");
+            };
+
+        });
+
+    }
+}
