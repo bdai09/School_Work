@@ -1,0 +1,6 @@
+.fixed-panel{
+    min-height: 60vh;
+    max-height: 60vh;
+    padding : 10pt;
+    overflow-y: scroll;
+}
