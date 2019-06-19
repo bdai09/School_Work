@@ -127,3 +127,95 @@ Activity_quiz.XML
         </LinearLayout>
     </LinearLayout>
 </FrameLayout>
+
+
+
+Activity_HINT.XML
+
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context="com.bignerdranch.android.geoquiz.CheatActivity"
+    android:background="#ffff00">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/warning_text"
+      android:textSize="25dp"
+        android:textColor="#000000"/>
+
+    <TextView
+        android:id="@+id/answer_text_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="6dp"
+        android:text="Hint"
+        android:gravity="center"
+      android:textSize="20dp"
+      android:textColor="#000000"
+        android:background="#ff00ff"/>
+
+    <Button
+        android:id="@+id/show_answer_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+      android:layout_marginTop="10dp"
+        android:text="@string/show_hint_button"/>
+
+    <Button
+        android:id="@+id/exit_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+      android:layout_marginTop="10dp
+"
+        android:text="@string/exit_button"/>
+
+</LinearLayout>
+
+Cheat.xml
+
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context="com.bignerdranch.android.geoquiz.CheatActivity"
+    android:background="#ff0000">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/warning_text"
+      android:textSize="25dp"
+        android:textColor="#ffffff"/>
+
+    <TextView
+        android:id="@+id/answer_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:text="Answer"
+      android:textSize="20dp"
+        android:background="#ff00ff"/>
+
+    <Button
+        android:id="@+id/show_answer_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+      android:layout_marginTop="10dp"
+        android:text="@string/show_answer_button"/>
+
+    <Button
+        android:id="@+id/exit_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/exit_button"/>
+
+</LinearLayout>
