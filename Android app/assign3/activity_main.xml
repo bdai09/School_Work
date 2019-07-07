@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.atham4.asgn3.MainActivity">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#34b8f2">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Hello Toronto"
+        android:gravity="center"
+        android:textColor="#ffffff"
+        android:background="#d986f2"
+        android:textSize="30dp"
+
+       />
+<LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    >
+    <TextView
+        android:id="@+id/addTeam"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ADD TEAM"
+        android:textColor="#000000"
+        android:textSize="30dp"
+       />
+
+    <TextView
+        android:layout_marginLeft="20dp"
+        android:id="@+id/exit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="EXIT"
+        android:textColor="#000000"
+        android:textSize="30dp"
+       />
+
+
+</LinearLayout>
+</LinearLayout>
+</android.support.constraint.ConstraintLayout>
