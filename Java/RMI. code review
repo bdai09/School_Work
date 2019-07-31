@@ -1,0 +1,228 @@
+//RMI interface
+import java.rmi.Remote; 
+import java.rmi.RemoteException; 
+
+public interface Hello extends Remote { 
+	String sayHello(int timeOfDay) throws RemoteException; 
+}
+
+
+
+
+//RMI Service Implementation
+import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
+
+public class HelloImpl extends UnicastRemoteObject implements Hello {
+	
+	// Implementations must have an explicit constructor
+	// in order to declare the RemoteException exception
+	public HelloImpl() throws RemoteException {
+		super();
+	}
+
+	public String sayHello(int time) throws RemoteException {
+		switch (time) {
+		case 1:
+			return "Good morning!";
+		case 2:
+			return "Good afternoon!";
+		case 3:
+			return "Good evening!";
+		default:
+			return "Good day!";
+		}
+	}
+}
+
+
+
+//RMI Client
+import java.io.IOException;
+import java.rmi.Naming;
+import java.util.Scanner;
+
+public class HelloClient {
+	// "obj" is the identifier that we'll use to refer
+	// to the remote object that implements the "Hello"
+	// interface
+	Hello obj = null;
+
+	public String action(int input) {
+		String message = null;
+
+		try {
+			obj = (Hello) Naming.lookup("rmi://localhost:1099/HelloService");
+			message = obj.sayHello(input);
+		} catch (Exception e) {
+			System.out.println("Hello Client Exception: " + e.getMessage());
+		}
+
+		return message;
+	}
+
+	public static void main(String[] args) throws IOException {
+		HelloClient hc = new HelloClient();
+		Scanner input = new Scanner(System.in);
+
+		while (true) {
+			int i = input.nextInt();
+			
+			if (i != 0) {
+				System.out.println("Message from Server: " + hc.action(i));
+			} else {
+				break;
+			}
+		}
+		
+		input.close();
+	}
+}
+
+
+
+
+//RMI Server
+import java.rmi.Naming;
+import java.rmi.registry.LocateRegistry;
+import java.rmi.registry.Registry;
+
+public class HelloServer {
+	public static void main(String args[]) {
+		try {
+			// Create the object implemtation
+			Hello obj = new HelloImpl();
+
+			// Bind this object instance to the name "HelloService"
+			// Remember to run rmiregistry first!
+			Naming.rebind("rmi://localhost:1099/HelloService", obj);
+			
+			// And here's the second solution (without the need of running rmiregistry)
+//			Registry registry = LocateRegistry.createRegistry(1099);
+//			registry.rebind("HelloService", obj);
+
+			System.out.println("HelloService bound in registry");
+			System.out.println("HelloService is running");
+		} catch (Exception e) {
+			System.err.println("Problem: " + e);
+			System.exit(1);
+		}
+	}
+}
+
+
+
+
+////////calculator
+
+//Interface defines all of the remote features offered by the server
+public interface Calculator extends java.rmi.Remote {
+
+	long add(long a, long b)
+			throws java.rmi.RemoteException;
+
+	long sub(long a, long b)
+			throws java.rmi.RemoteException;
+
+	long mul(long a, long b)
+			throws java.rmi.RemoteException;
+
+	long div(long a, long b)
+			throws java.rmi.RemoteException;
+}
+
+
+//The implementation of the interface for the remote service
+public class CalculatorImpl extends java.rmi.server.UnicastRemoteObject implements Calculator {
+
+	// Implementations must have an explicit constructor
+	// in order to declare the RemoteException exception
+	public CalculatorImpl() throws java.rmi.RemoteException {
+		super();
+	}
+
+	public long add(long a, long b) throws java.rmi.RemoteException {
+		return a + b;
+	}
+
+	public long sub(long a, long b) throws java.rmi.RemoteException {
+		return a - b;
+	}
+
+	public long mul(long a, long b) throws java.rmi.RemoteException {
+		return a * b;
+	}
+
+	public long div(long a, long b) throws java.rmi.RemoteException {
+		return a / b;
+	}
+}
+
+
+
+
+import java.rmi.Naming;
+import java.rmi.RemoteException;
+import java.net.MalformedURLException;
+import java.rmi.NotBoundException;
+
+public class CalculatorClient {
+
+	public static void main(String[] args) {
+		try {
+			Calculator c = (Calculator) Naming.lookup("rmi://localhost:1099/CalculatorService");
+
+			System.out.println(c.sub(4, 3));
+			System.out.println(c.add(4, 5));
+			System.out.println(c.mul(3, 6));
+			System.out.println(c.div(9, 3));
+
+		} catch (MalformedURLException murle) {
+			System.out.println("MalformedURLException");
+			System.out.println(murle);
+		} catch (RemoteException re) {
+			System.out.println("RemoteException");
+			System.out.println(re);
+		} catch (NotBoundException nbe) {
+			System.out.println("NotBoundException");
+			System.out.println(nbe);
+		} catch (ArithmeticException ae) {
+			System.out.println("ArithmeticException");
+			System.out.println(ae);
+		}
+	}
+}
+
+
+
+import java.rmi.Naming;
+import java.rmi.registry.LocateRegistry;
+import java.rmi.registry.Registry;
+
+public class CalculatorServer {
+
+	public CalculatorServer() {
+		try {			
+			// Create the object implemtation
+			Calculator obj = new CalculatorImpl();
+			
+			// Bind this object instance to the name "CalculatorService"
+			// Remember to run rmiregistry first!
+			Naming.rebind("rmi://localhost:1099/CalculatorService", obj);
+			
+			// And here's the second solution (without the need of running rmiregistry)
+//			Registry registry = LocateRegistry.createRegistry(1099);
+//			registry.rebind("CalculatorService", obj);
+			
+			System.out.println("CalculatorService bound in registry");			
+		} catch (Exception e) {
+			System.err.println("Problem: " + e);
+			System.exit(1);
+		}
+	}
+
+	public static void main(String args[]) {
+		new CalculatorServer();
+		System.out.println("CalculatorService is running");
+	}
+}
