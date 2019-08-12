@@ -11,8 +11,6 @@ public final class Utils {
         }
         return extractFeatureFromJson(jsonResponse);
     }
-
-
     private static URL createUrl(String stringUrl) {
         URL url = null;
         try {
@@ -22,7 +20,6 @@ public final class Utils {
         }
         return url;
     }
-
     private static String makeHttpRequest(URL url) throws IOException {
         String jsonResponse = "";
         if (url == null) {
@@ -54,7 +51,6 @@ public final class Utils {
         }
         return jsonResponse;
     }
-
     private static String readFromStream(InputStream inputStream) throws IOException {
         StringBuilder output = new StringBuilder();
         if (inputStream != null) {
@@ -68,7 +64,6 @@ public final class Utils {
         }
         return output.toString();
     }
-
     private static List<String> extractFeatureFromJson(String earthquakeJSON) {
         if (TextUtils.isEmpty(earthquakeJSON)) {
             return null;
@@ -88,7 +83,6 @@ public final class Utils {
                 JSONArray coordinates = geometry.getJSONArray("coordinates");
                 String log = coordinates.getString(0);
                 String lat = coordinates.getString(1);
-
                 quakeList.add(title + "@@" + time + "@@" + url + "@@" + mag + "@@" + log + "@@" + lat);
             }
             return quakeList;
