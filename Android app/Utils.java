@@ -1,94 +1,75 @@
-public final class Utils {
-    public static final String LOG_TAG = Utils.class.getSimpleName();
-
-    public static List<String> fetchEarthquakeData(String requestUrl) {
-        URL url = createUrl(requestUrl);
-        String jsonResponse = null;
-        try {
-            jsonResponse = makeHttpRequest(url);
-        } catch (IOException e) {
-            Log.e(LOG_TAG, "Error closing input stream ", e);
-        }
-        return extractFeatureFromJson(jsonResponse);
+public class FirstActivity extends AppCompatActivity {
+    ListView linearLayoutListView;
+    TextView url;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_first);
+        Intent intent = getIntent();
+        String magnitude = intent.getStringExtra("magnitude");
+        String date2 = intent.getStringExtra("date");
+        String order = intent.getStringExtra("order");
+        String stringUrl = "https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=" + date2 + "&minmagnitude=7.0&limit=" + magnitude + "&orderby=" + order;
+        QuakeAsyncTask task = new QuakeAsyncTask();
+        task.execute(stringUrl);
     }
-    private static URL createUrl(String stringUrl) {
-        URL url = null;
-        try {
-            url = new URL(stringUrl);
-        } catch (MalformedURLException e) {
-            Log.e(LOG_TAG, "Error with creating URL ", e);
+    class QuakeAsyncTask extends AsyncTask<String, Void, List<String>> {
+        @Override
+        protected List<String> doInBackground(String... stringUrl) {
+            return Utils.fetchEarthquakeData(stringUrl[0]);
         }
-        return url;
+        public void onPostExecute(List<String> postExecuteResult) {
+            CustomListAdapter arrayAdapter = new CustomListAdapter(FirstActivity.this, postExecuteResult);
+            linearLayoutListView = findViewById(R.id.listViewManyItemsID);
+            linearLayoutListView.setAdapter(arrayAdapter);
+            linearLayoutListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    String lat = ((TextView) view.findViewById(R.id.textViewLat)).getText().toString();
+                    String log = ((TextView) view.findViewById(R.id.textViewLog)).getText().toString();
+                    String url = "https://www.openstreetmap.org/?mlat=" + lat + "&mlon=" + log + "#map=5/" + lat + "/" + log;
+                  Intent intent = new Intent(FirstActivity.this, WebActivity.class);
+                    intent.putExtra("url", url);
+                    startActivity(intent);
+                }
+            });
+        }
     }
-    private static String makeHttpRequest(URL url) throws IOException {
-        String jsonResponse = "";
-        if (url == null) {
-            return jsonResponse;
-        }
-        HttpURLConnection urlConnection = null;
-        InputStream inputStream = null;
-        try {
-            urlConnection = (HttpURLConnection) url.openConnection();
-            urlConnection.setReadTimeout(10000);
-            urlConnection.setConnectTimeout(15000);
-            urlConnection.setRequestMethod("GET");
-            urlConnection.connect();
-            if (urlConnection.getResponseCode() == 200) {
-                inputStream = urlConnection.getInputStream();
-                jsonResponse = readFromStream(inputStream);
-            } else {
-                Log.e(LOG_TAG, "Error response code: " + urlConnection.getResponseCode());
-            }
-        } catch (IOException e) {
-            Log.e(LOG_TAG, "Problem retrieving the earthquake JSON results." + e);
-        } finally {
-            if (urlConnection != null) {
-                urlConnection.disconnect();
-            }
-            if (inputStream != null) {
-                inputStream.close();
-            }
-        }
-        return jsonResponse;
+}
+class CustomListAdapter extends ArrayAdapter<String> {
+    Activity context;
+    List<String> itemName1;
+    public CustomListAdapter(Activity activity, List<String> itemNameA) {
+        super(activity, R.layout.text_view1, itemNameA);
+        this.context = activity;
+        this.itemName1 = itemNameA;
     }
-    private static String readFromStream(InputStream inputStream) throws IOException {
-        StringBuilder output = new StringBuilder();
-        if (inputStream != null) {
-            InputStreamReader inputStreamReader = new InputStreamReader(inputStream, Charset.forName("UTF-8"));
-            BufferedReader reader = new BufferedReader(inputStreamReader);
-            String line = reader.readLine();
-            while (line != null) {
-                output.append(line);
-                line = reader.readLine();
-            }
+    public View getView(int position, View view, ViewGroup parent) {
+        LayoutInflater inflater = context.getLayoutInflater();
+        View rowView = inflater.inflate(R.layout.text_view1, null, true);
+        String earthInfo[] = itemName1.get(position).split("@@");
+        TextView title = rowView.findViewById(R.id.textViewInfo);
+        TextView date = rowView.findViewById(R.id.textViewDate);
+        TextView url = rowView.findViewById(R.id.textViewUrl);
+        TextView mag = rowView.findViewById(R.id.textViewMag);
+        TextView log = rowView.findViewById(R.id.textViewLog);
+        TextView lat = rowView.findViewById(R.id.textViewLat);
+        title.setText(earthInfo[0]);
+        date.setText(new Date(Long.parseLong(earthInfo[1])).toString());
+        url.setText(earthInfo[2]);
+        mag.setText(earthInfo[3]);
+        log.setText(earthInfo[4]);
+        lat.setText(earthInfo[5]);
+        double number = Double.parseDouble(mag.getText().toString());
+        System.out.print(number);
+        if (number > 7.4) {
+            title.setBackgroundColor(context.getResources().getColor(android.R.color.holo_red_light));
+            date.setBackgroundColor(context.getResources().getColor(android.R.color.holo_red_light));
         }
-        return output.toString();
-    }
-    private static List<String> extractFeatureFromJson(String earthquakeJSON) {
-        if (TextUtils.isEmpty(earthquakeJSON)) {
-            return null;
+        if (number < 7.5) {
+            title.setBackgroundColor(context.getResources().getColor(android.R.color.holo_purple));
+            date.setBackgroundColor(context.getResources().getColor(android.R.color.holo_purple));
         }
-        List<String> quakeList = new ArrayList<>();
-        try {
-            JSONObject baseJsonResponse = new JSONObject(earthquakeJSON);
-            JSONArray earthquakeArray = baseJsonResponse.getJSONArray("features");
-            for (int i = 0; i < earthquakeArray.length(); i++) {
-                JSONObject currentEarthquake = earthquakeArray.getJSONObject(i);
-                JSONObject properties = currentEarthquake.getJSONObject("properties");
-                String title = properties.getString("title");
-                String time = properties.getString("time");
-                String url = properties.getString("url");
-                String mag = properties.getString("mag");
-                JSONObject geometry = currentEarthquake.getJSONObject("geometry");
-                JSONArray coordinates = geometry.getJSONArray("coordinates");
-                String log = coordinates.getString(0);
-                String lat = coordinates.getString(1);
-                quakeList.add(title + "@@" + time + "@@" + url + "@@" + mag + "@@" + log + "@@" + lat);
-            }
-            return quakeList;
-        } catch (JSONException e) {
-            Log.e(LOG_TAG, "Problem parsing the earthquake JSON results", e);
-        }
-        return null;
+        return rowView;
     }
 }
