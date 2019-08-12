@@ -14,7 +14,6 @@ public final class Utils {
         }
         return extractFeatureFormJason(jsonResponse);
     }
-
     private static URL createUrl(String stringUrl) {
         URL url = null;
         try {
@@ -24,7 +23,6 @@ public final class Utils {
         }
         return url;
     }
-
     private static String makeHttpRequest(URL url) throws IOException {
         String jsonResponse = "";
 
@@ -32,7 +30,6 @@ public final class Utils {
         if (url == null) {
             return jsonResponse;
         }
-
         HttpURLConnection urlConnection = null;
         InputStream inputStream = null;
         try {
@@ -65,7 +62,6 @@ public final class Utils {
         }
         return jsonResponse;
     }
-
     private static String readFromStream(InputStream inputStream) throws IOException {
         StringBuilder output = new StringBuilder();
         if (inputStream != null) {
@@ -79,37 +75,21 @@ public final class Utils {
         }
         return output.toString();
     }
-
     private static List<String> extractFeatureFormJason(String earthquakeJSON) {
         if (TextUtils.isEmpty(earthquakeJSON)) {
             return null;
         }
-
-
         List<String> quakeList = new ArrayList<>();
-
         try {
-
-
             JSONObject baseJsonResponse = new JSONObject(earthquakeJSON);
-
-
             JSONArray earthquakeArray = baseJsonResponse.getJSONArray("features");
-
-
             for (int i = 0; i < earthquakeArray.length(); i++) {
-
-
                 JSONObject currentEarthquake = earthquakeArray.getJSONObject(i);
-
-
                 JSONObject properties = currentEarthquake.getJSONObject("properties");
-
                 String title = properties.getString("title");
                 String time = properties.getString("time");
                 String url = properties.getString("url");
                 quakeList.add(title + " " + time + " " + url);
-
             }
             return quakeList;
         } catch (JSONException e) {
