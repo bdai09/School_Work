@@ -2,31 +2,29 @@ public final class Utils {
     public static final String LOG_TAG = Utils.class.getSimpleName();
 
     public static List<String> fetchEarthquakeData(String requestUrl) {
-        // Create URL object
         URL url = createUrl(requestUrl);
-
-        // Perform HTTP request to the URL and receive a JSON response back
         String jsonResponse = null;
         try {
             jsonResponse = makeHttpRequest(url);
         } catch (IOException e) {
-            Log.e(LOG_TAG, "Error closing input stream", e);
+            Log.e(LOG_TAG, "Error closing input stream ", e);
         }
-        return extractFeatureFormJason(jsonResponse);
+        return extractFeatureFromJson(jsonResponse);
     }
+
+
     private static URL createUrl(String stringUrl) {
         URL url = null;
         try {
             url = new URL(stringUrl);
         } catch (MalformedURLException e) {
-            Log.e(LOG_TAG, "Problem building the URL ", e);
+            Log.e(LOG_TAG, "Error with creating URL ", e);
         }
         return url;
     }
+
     private static String makeHttpRequest(URL url) throws IOException {
         String jsonResponse = "";
-
-        // If the URL is null, then return early.
         if (url == null) {
             return jsonResponse;
         }
@@ -34,13 +32,10 @@ public final class Utils {
         InputStream inputStream = null;
         try {
             urlConnection = (HttpURLConnection) url.openConnection();
-            urlConnection.setReadTimeout(10000 /* milliseconds */);
-            urlConnection.setConnectTimeout(15000 /* milliseconds */);
+            urlConnection.setReadTimeout(10000);
+            urlConnection.setConnectTimeout(15000);
             urlConnection.setRequestMethod("GET");
             urlConnection.connect();
-
-            // If the request was successful (response code 200),
-            // then read the input stream and parse the response.
             if (urlConnection.getResponseCode() == 200) {
                 inputStream = urlConnection.getInputStream();
                 jsonResponse = readFromStream(inputStream);
@@ -48,20 +43,18 @@ public final class Utils {
                 Log.e(LOG_TAG, "Error response code: " + urlConnection.getResponseCode());
             }
         } catch (IOException e) {
-            Log.e(LOG_TAG, "Problem retrieving the earthquake JSON results.", e);
+            Log.e(LOG_TAG, "Problem retrieving the earthquake JSON results." + e);
         } finally {
             if (urlConnection != null) {
                 urlConnection.disconnect();
             }
             if (inputStream != null) {
-                // Closing the input stream could throw an IOException, which is why
-                // the makeHttpRequest(URL url) method signature specifies than an IOException
-                // could be thrown.
                 inputStream.close();
             }
         }
         return jsonResponse;
     }
+
     private static String readFromStream(InputStream inputStream) throws IOException {
         StringBuilder output = new StringBuilder();
         if (inputStream != null) {
@@ -75,7 +68,8 @@ public final class Utils {
         }
         return output.toString();
     }
-    private static List<String> extractFeatureFormJason(String earthquakeJSON) {
+
+    private static List<String> extractFeatureFromJson(String earthquakeJSON) {
         if (TextUtils.isEmpty(earthquakeJSON)) {
             return null;
         }
@@ -89,11 +83,17 @@ public final class Utils {
                 String title = properties.getString("title");
                 String time = properties.getString("time");
                 String url = properties.getString("url");
-                quakeList.add(title + " " + time + " " + url);
+                String mag = properties.getString("mag");
+                JSONObject geometry = currentEarthquake.getJSONObject("geometry");
+                JSONArray coordinates = geometry.getJSONArray("coordinates");
+                String log = coordinates.getString(0);
+                String lat = coordinates.getString(1);
+
+                quakeList.add(title + "@@" + time + "@@" + url + "@@" + mag + "@@" + log + "@@" + lat);
             }
             return quakeList;
         } catch (JSONException e) {
-            Log.e("QueryUtils", "Problem parsing the earthquake JSON results", e);
+            Log.e(LOG_TAG, "Problem parsing the earthquake JSON results", e);
         }
         return null;
     }
